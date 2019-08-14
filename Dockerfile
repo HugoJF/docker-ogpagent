@@ -18,6 +18,7 @@ RUN apt-get update \
                         perl-modules \
                         pure-ftpd \
                         e2fsprogs \
+                        nfs-common\ 
                         libhttp-daemon-perl \
                         libarchive-any-perl \
                         libio-compress-perl \
