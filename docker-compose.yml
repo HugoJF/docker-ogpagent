@@ -9,6 +9,8 @@ services:
       - "12679:12679/tcp"
       - "27015:27015/tcp"
       - "27015:27015/udp"
+    security_opt:
+        - seccomp:unconfined
     cap_add:
         - CAP_SYS_ADMIN
     environment:
