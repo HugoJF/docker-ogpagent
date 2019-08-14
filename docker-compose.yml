@@ -3,12 +3,14 @@ services:
   agent:
     image: hugojf/docker-ogpagent
     restart: always
+    networks:
+        - nfs_broadcasts
     ports:
       - "12679:12679/tcp"
       - "27015:27015/tcp"
       - "27015:27015/udp"
     environment:
-      - NFS_SERVER=192.168.100.1
+      - NFS_SERVER=192.168.100.9
       - OGP_LOGFILE=/opt/OGP/ogp_agent.log
       - OGP_LISTEN_PORT=12679
       - OGP_LISTEN_IP=0.0.0.0
