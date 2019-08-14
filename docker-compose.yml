@@ -10,7 +10,7 @@ services:
       - "27015:27015/tcp"
       - "27015:27015/udp"
     security_opt:
-        - seccomp:unconfined
+        - apparmor:unconfined
     cap_add:
         - CAP_SYS_ADMIN
     environment:
