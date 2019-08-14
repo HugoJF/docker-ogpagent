@@ -54,7 +54,7 @@ RUN curl -sSLf -z /usr/local/bin/gomplate -o /usr/local/bin/gomplate https://git
 COPY templates /opt/OGP/templates
 
 # Add health check script
-ADD docker-health.sh /docker-health.
+ADD docker-health.sh /docker-health.sh
 RUN chmod +x /docker-health.sh
 
 # Expose ports
