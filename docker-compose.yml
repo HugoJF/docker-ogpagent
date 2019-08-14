@@ -28,6 +28,10 @@ services:
       - OGP_FTP_METHOD=PureFTPd
       - OGP_AUTORESTART_SERVER=1
 networks:
+    host_network:
+        external:
+            name: host
+
     nfs_broadcasts:
         external:
             name: nfs_broadcasts
