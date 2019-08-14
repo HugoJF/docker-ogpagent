@@ -9,6 +9,8 @@ services:
       - "12679:12679/tcp"
       - "27015:27015/tcp"
       - "27015:27015/udp"
+    cap_add:
+        - CAP_SYS_ADMIN
     environment:
       - NFS_SERVER=192.168.100.9
       - OGP_LOGFILE=/opt/OGP/ogp_agent.log
