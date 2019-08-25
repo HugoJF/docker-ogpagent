@@ -5,16 +5,19 @@ services:
     restart: always
     networks:
         - nfs_broadcasts
+        - public_ip_network
     ports:
-      - "12679:12679/tcp"
+      - "${OGP_LISTEN_PORT:-12679}:12679/tcp"
       - "27015:27015/tcp"
       - "27015:27015/udp"
     security_opt:
         - apparmor:unconfined
     cap_add:
         - CAP_SYS_ADMIN
+        - NET_ADMIN
     environment:
-      - NFS_SERVER=192.168.100.9
+      - GATEWAY=${GATEWAY:-router}
+      - NFS_SERVER=${NFS_SERVER}
       - OGP_LOGFILE=/opt/OGP/ogp_agent.log
       - OGP_LISTEN_PORT=12679
       - OGP_LISTEN_IP=0.0.0.0
@@ -28,6 +31,9 @@ services:
       - OGP_FTP_METHOD=PureFTPd
       - OGP_AUTORESTART_SERVER=1
 networks:
+    public_ip_network:
+        external:
+            name: '${PUBLIC_IP_NETWORK}'
     host_network:
         external:
             name: host

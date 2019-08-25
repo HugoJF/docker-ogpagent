@@ -12,12 +12,13 @@
 
 # echo 'The bindGW '$bind_gateway
 
-echo "Mounting on $NFS_SERVER"
+echo "Mounting storage on $NFS_SERVER"
 mkdir /home/ogp_agent/OGP_User_Files
 mount -o vers=4,loud -v $NFS_SERVER:/ /home/ogp_agent/OGP_User_Files
 
 chmod +x /opt/OGP/ogp_agent_run
 echo "Starting DockerOGP"
 
+gateway_watch &
 tail -F /opt/OGP/ogp_agent.log &
 su ogp_agent -c "cd /opt/OGP/; ./ogp_agent_run"

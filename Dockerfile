@@ -25,7 +25,9 @@ RUN apt-get update \
                         libfrontier-rpc-perl \
                         pure-ftpd \
                         e2fsprogs \
-                        netcat
+                        netcat \
+			dnsutils \
+			net-tools
 
 RUN cpan Frontier::Daemon::Forking Crypt::XXTEA
 
@@ -33,6 +35,11 @@ RUN cpan Frontier::Daemon::Forking Crypt::XXTEA
 ADD ogpmanager.sh /usr/local/bin/
 RUN mv /usr/local/bin/ogpmanager.sh /usr/local/bin/ogpmanager \
     && chmod +x /usr/local/bin/ogpmanager
+
+# Setup Gateway_watch
+ADD gateway_watch.sh /usr/local/bin/
+RUN mv /usr/local/bin/gateway_watch.sh /usr/local/bin/gateway_watch \
+    && chmod +x /usr/local/bin/gateway_watch
 
 # Setup user
 RUN useradd ogp_agent -p password -m \
