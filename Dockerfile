@@ -27,7 +27,8 @@ RUN apt-get update \
                         e2fsprogs \
                         netcat \
 			dnsutils \
-			net-tools
+			net-tools \
+			default-jre
 
 RUN cpan Frontier::Daemon::Forking Crypt::XXTEA
 

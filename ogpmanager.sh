@@ -14,7 +14,7 @@
 
 echo "Mounting storage on $NFS_SERVER"
 mkdir /home/ogp_agent/OGP_User_Files
-mount -o vers=4,loud -v $NFS_SERVER:/ /home/ogp_agent/OGP_User_Files
+mount -o vers=4,loud,user_xattr -v $NFS_SERVER:/ /home/ogp_agent/OGP_User_Files
 
 chmod +x /opt/OGP/ogp_agent_run
 echo "Starting DockerOGP"
